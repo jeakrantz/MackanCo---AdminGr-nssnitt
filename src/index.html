@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<!-- 
+MackorCo - Admin gränssnitt - Projektuppgift
+Kurs: Webbutveckling III - DT173G
+Utvecklare: Jeanette Krantz 
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurang Admin</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<script>
+    //Check om inloggad. Om ej, skickas till login.html
+    let user = sessionStorage.getItem("username");
+    if (user === null) {
+        console.log("logga in")
+        window.location.href = "login.html";
+    } else {
+        console.log("inloggad");
+    }
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">Hantera menyn</a>
+                </li>
+                <li>
+                    <a href="takeaway.html">Take away-ordrar</a>
+                </li>
+                <li>
+                    <a href="content.html">Hantera innehåll</a>
+                </li>
+                <li>
+                    <a href="login.html" onclick="logoutUser();">Logga ut</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Restaurang - Hantera menyn</h1>
+        <p>På den här sidan hanteras menys innehåll. <br>
+            Ändringar sker direkt i menyn. <br>
+            Längst ned går det att lägga till nya saker till menyn.</p>
+        <div id="menu" class="menu-container">
+            <h2>Maträtter</h2>
+            <div id="foodmessage"></div>
+            <div id="food-menu" class="menu-section">
+                <!-- Här syns maträtterna -->
+            </div>
+            <h2>Drycker</h2>
+            <div id="drinkmessage"></div>
+            <div id="drink-menu" class="menu-section">
+                <!-- Här syns dryckerna -->
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn" onclick="showForm(BtnResponse.food)">Lägg till ny maträtt</button>
+            <button class="btn" onclick="showForm(BtnResponse.drink)">Lägg till ny dryck</button>
+        </div>
+
+        <!-- Formulär för att lägga till maträtter -->
+        <form id="foodForm">
+            <h2>Maträtt</h2>
+            <div class="flex-container-column">
+                <div>
+                    <label for="foodname">Namn:</label>
+                    <br>
+                    <input type="text" name="foodname" id="foodnameForm">
+                    <br>
+                </div>
+                <div>
+                    <label for="foodprice">Pris:</label>
+                    <br>
+                    <input type="text" name="foodprice" id="foodpriceForm">
+                    <br>
+                </div>
+                <div>
+                    <label for="ingredients">Ingredienser:</label>
+                    <br>
+                    <input type="text" name="ingredients" id="ingredientsForm">
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="btn-container">
+                <button class="btn" onclick="createFood(event)">Lägg till</button>
+                <button class="btn" onclick="showForm(BtnResponse.close)">Stäng</button>
+            </div>
+        </form>
+
+        <!-- Formulär för att lägga till drycker -->
+        <form id="drinkForm">
+            <h2>Dryck</h2>
+            <div class="flex-container-column">
+                <div>
+                    <label for="drinkname">Namn:</label>
+                    <br>
+                    <input type="text" name="drinkname" id="drinkname">
+                    <br>
+                </div>
+                <div>
+                    <label for="drinkprice">Pris:</label>
+                    <br>
+                    <input type="text" name="drinkprice" id="drinkprice">
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="btn-container">
+                <input class="btn" type="submit" value="Lägg till" id="drinkSubmit" onclick="createDrink(event)">
+                <button class="btn" onclick="showForm(BtnResponse.close)">Stäng</button>
+            </div>
+        </form>
+        <div id="addmessage"></div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/typescript.js"></script>
+    <footer>
+        <p>Webbutveckling III, Kurs DT173G</p>
+        <p>Jeanette Krantz - 2023</p>
+    </footer>
+</body>
+
+</html>

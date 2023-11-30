@@ -1,0 +1,411 @@
+$base-color: beige;
+$dark-color: rgb(34, 34, 162);
+$contrast-color: rgb(237, 59, 0);
+$good-contrast: rgb(0, 128, 0);
+$main-font: 'Wix Madefor Display', sans-serif;
+
+/* Screen sizes */
+$phone: 600px;
+$tablet: 850px;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $base-color;
+    color: $dark-color;
+    font-family: $main-font;
+    min-height: 90vh;
+}
+
+.nav {
+    ul {
+        display: flex;
+        list-style: none;
+        flex-direction: column;
+        gap: 1em;
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $dark-color;
+            font-weight: 600;
+
+            &:hover {
+                border-bottom: 3px solid;
+                transition: .2s ease-in-out;
+                color: $contrast-color;
+            }
+        }
+
+        .active {
+            color: $good-contrast;
+            border-bottom: 3px solid;
+        }
+    }
+}
+
+header {
+    background-color: $base-color;
+    border-bottom: 2px solid $dark-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    h1 {
+        justify-self: left;
+
+        a {
+            color: $contrast-color;
+            text-decoration: none;
+        }
+    }
+
+    nav {
+        @extend .nav;
+        display: inline-block;
+        padding: 1em 0;
+
+        ul {
+            flex-direction: row;
+            gap: 2em;
+
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        flex-direction: column;
+        text-align: center;
+
+        nav {
+            display: inline-block;
+            justify-self: center;
+            margin: 1em auto;
+
+            ul {
+                flex-direction: column;
+                gap: 2em;
+            }
+
+        }
+    }
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    min-height: 85vh;
+}
+
+aside {
+    max-width: 200px;
+    min-width: 100px;
+    min-height: inherit;
+    flex-basis: 20%;
+    border-right: 2px solid $dark-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 5em;
+
+    nav {
+        margin-top: 5em;
+        margin-left: 1.5em;
+        @extend .nav;
+
+        ul {
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width: $tablet) {
+        display: none;
+    }
+}
+
+main {
+    max-width: 1080px;
+    min-height: inherit;
+    flex-basis: 70%;
+    margin: 1em auto;
+
+    h1,
+    h2,
+    p {
+        text-align: center;
+        margin-bottom: 1em;
+
+        &.good {
+            color: $good-contrast;
+            font-weight: 600;
+        }
+
+        &.bad {
+            color: $contrast-color;
+            font-weight: 600;
+        }
+    }
+
+    @media screen and (max-width: $phone) {
+        flex-basis: 90%;
+    }
+}
+
+.menu-container {
+    max-width: 800px;
+    border: 3px solid $contrast-color;
+    margin: 1em auto;
+    padding: 1em;
+
+    @media screen and (max-width: $phone) {
+        padding: .2em;
+
+        .menu-article {
+            margin: .2em;
+        }
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .menu-section {
+        border: 2px solid $dark-color;
+        margin: 1em;
+        padding: 1em;
+        background: $base-color;
+        background-blend-mode: overlay;
+
+        p {
+            text-align: left;
+            margin: .3em auto;
+        }
+
+        .menu-article {
+            margin: 1em;
+
+            .menu-piece {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border-bottom: 1px dashed $dark-color;
+
+                div {
+                    display: inline;
+                }
+
+            }
+
+        }
+    }
+}
+
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: .3em;
+
+    input,
+    select,
+    textarea,
+    .form-input {
+        padding: 5px;
+        border: 2px solid $dark-color;
+        border-radius: 5px;
+        background-color: $base-color;
+        color: $dark-color;
+        margin-bottom: 1em;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+        gap: 2em;
+        margin: 1em;
+
+        @media screen and (max-width: $phone) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-container-column {
+            display: flex;
+            flex-direction: column;
+            gap: .5em;
+            border: 1px solid $contrast-color;
+            padding: 1em;
+            min-width: 200px;
+
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    border-top: 2px solid $dark-color;
+
+    p {
+        margin: 1em auto;
+    }
+
+    nav {
+        @extend .nav;
+
+        display: none;
+
+        @media screen and (max-width: $tablet) {
+            display: inline;
+        }
+
+
+    }
+
+}
+
+.reviews-section {
+    margin-top: 2em;
+
+    .review-article {
+        @extend .menu-container;
+        display: flex;
+        flex-direction: column;
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: .3em;
+        }
+
+        select {
+            padding: 5px;
+            border: 2px solid $dark-color;
+            border-radius: 5px;
+            background-color: $base-color;
+            color: $dark-color;
+            margin: 0 auto;
+            max-width: fit-content
+        }
+    }
+}
+
+#orders {
+    .order-box {
+        @extend .menu-container;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        h3 {
+            margin-bottom: .5em;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            @media screen and (max-width: $phone) {
+                flex-direction: column;
+            }
+
+            .order {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+#foodForm,
+#drinkForm {
+    display: none;
+
+    .flex-container-column {
+        @extend .flex-container-column;
+        flex-direction: column;
+        align-items: center;
+        gap: .5em;
+        margin: 0;
+    }
+}
+
+#textForm {
+    margin: 2em auto;
+
+    .flex-container-column {
+        @extend .flex-container-column;
+        flex-direction: column;
+        align-items: center;
+        gap: .5em;
+        margin: 0;
+    }
+}
+
+.contrast {
+    color: $contrast-color;
+}
+
+svg {
+    margin-right: .5em;
+}
+
+.btn {
+    font-size: large;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid $dark-color;
+    background-color: transparent;
+    color: $dark-color;
+    margin: .5em;
+    padding: .3em;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $dark-color;
+        border-color: $dark-color;
+        color: $base-color;
+    }
+
+    &.good {
+        &:hover {
+            background-color: $good-contrast;
+            border-color: $good-contrast;
+            color: $base-color;
+        }
+    }
+
+    &.bad {
+        &:hover {
+            background-color: $contrast-color;
+            border-color: $contrast-color;
+            color: $base-color;
+        }
+
+    }
+}
+
+.btn-container {
+    margin: 1em auto;
+    width: fit-content;
+
+    .btn {
+        margin: 0 auto;
+    }
+}

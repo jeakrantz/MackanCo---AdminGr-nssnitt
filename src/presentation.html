@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<!-- 
+MackorCo - Admin gränssnitt - Projektuppgift
+Kurs: Webbutveckling III - DT173G
+Utvecklare: Jeanette Krantz 
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurang Admin</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<script>
+    //Check om inloggad. Om ej, skickas till login.html
+    let user = sessionStorage.getItem("username");
+    if (user === null) {
+        console.log("logga in")
+        window.location.href = "login.html";
+    } else {
+        console.log("inloggad");
+    }
+</script>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Hantera menyn</a>
+                </li>
+                <li>
+                    <a href="takeaway.html">Take away-ordrar</a>
+                </li>
+                <li>
+                    <a href="content.html" class="active">Hantera innehåll</a>
+                </li>
+                <li>
+                    <a href="login.html" onclick="logoutUser();">Logga ut</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Restaurang - Hantera Innehåll</h1>
+        <section>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='content.html'">Tillbaka</button>
+            </div>
+        </section>
+
+        <section>
+            <div id="textmessage"></div>
+            <h2>Presentation</h2>
+            <div id="presentation">
+                <!-- Här syns presentationerna -->
+            </div>
+
+            <!-- Formulär för att lägga till presentationstexter -->
+            <form id="textForm">
+                <label for="text">Ny text:</label>
+                <br>
+                <textarea name="text" id="text" cols="30" rows="10"></textarea>
+                <br>
+                <br>
+                <div class="btn-container">
+                    <button class="btn" onclick="createText(event)">Lägg till</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <footer>
+        <p>Webbutveckling III, Kurs DT173G</p>
+        <p>Jeanette Krantz - 2023</p>
+    </footer>
+</body>
+
+</html>

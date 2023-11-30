@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<!-- 
+MackorCo - Admin gränssnitt - Projektuppgift
+Kurs: Webbutveckling III - DT173G
+Utvecklare: Jeanette Krantz 
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurang Admin</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<script>
+    //Check om inloggad. Om så, skickas till index.html
+    let user = sessionStorage.getItem("username");
+    if (user === null) {
+        console.log("logga in")
+    } else {
+        console.log("inloggad");
+        window.location.href = "index.html";
+    }
+</script>
+
+<body>
+    <main>
+        <h1>Restaurang - Logga in</h1>
+        <div id="loginmessage"></div>
+
+        <!-- Formulär för att logga in -->
+        <form id="loginForm">
+            <label for="username">Användarnamn:</label>
+            <br>
+            <input type="text" name="username" id="username">
+            <br>
+            <label for="password">Lösenord:</label>
+            <br>
+            <input type="password" name="password" id="password">
+            <br>
+            <br>
+            <input class="btn good" type="submit" value="Logga in" id="loginBtn" onclick="getUser(event)">
+        </form>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/typescript.js"></script>
+    <footer>
+        <p>Webbutveckling III, Kurs DT173G</p>
+        <p>Jeanette Krantz - 2023</p>
+    </footer>
+</body>
+
+</html>
